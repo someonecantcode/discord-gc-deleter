@@ -26,6 +26,7 @@ How to use:
 <br>
 <br>
 3. if you want to change to another channel
+
 ```js
 let channelId = "new-gc-id"; deleteAllMessages();
 ```

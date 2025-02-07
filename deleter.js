@@ -1,7 +1,7 @@
 let authToken = null;
 let userId = null;
 const SPEED = 1250; //1000ms is good for avoid rate limiting. if you have 50-100 messages, you could go 750ms before getting rate limited.
-const channelId = "820124577849016320"; // Replace with ur own gc id 
+let channelId = "820124577849016320"; // Replace with ur own gc id 
 
 function waitForAuthData() {
     return new Promise(resolve => {

@@ -1,7 +1,7 @@
 # discord-gc-deleter
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
 
-Has your group chat ever been leaked? Then this piece of marvelous code will delete all your messages from latest to oldest sequentially via requesting messages in batches and deleting them. This is a self-bot so you are violating discord ToS of who cares. mwahaha
+Has your group chat ever been leaked? Then this piece of marvelous code will delete all your messages from latest to oldest sequentially via requesting messages in batches and deleting them. This is a self-bot so you are violating discord ToS but who cares. mwahaha
 Works for textchannels in a server as well.
 
 How to use:

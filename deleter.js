@@ -3,31 +3,33 @@ let userId = null;
 const SPEED = 1250; //1000ms is good for avoid rate limiting. if you have 50-100 messages, you could go 750ms before getting rate limited.
 let channelId = "820124577849016320"; // Replace with ur own gc id 
 
-function waitForAuthData() {
-    return new Promise(resolve => {
-        const interval = setInterval(() => {
-            if (authToken && userId) {
-                clearInterval(interval);
-                resolve();
-            }
-        }, 100);
-    });
-}
 
-window.webpackChunkdiscord_app.push([
-    [Math.random()], {}, (req) => {
-        for (const module of Object.values(req.c)) {
-            if (module?.exports?.default?.getToken !== undefined) {
-                authToken = module.exports.default.getToken();
-                console.log("Your Token:", authToken);
-            }
-            if (module?.exports?.default?.getCurrentUser !== undefined) {
-                userId = module.exports.default.getCurrentUser().id;
-                console.log("Your User ID:", userId);
-            }
-        }
-    }
-]);
+// DISCORD CHANGED THEIR INTERNAL METHODS SO YOU CAN'T GRAB authToken & userId.
+// function waitForAuthData() {
+//     return new Promise(resolve => {
+//         const interval = setInterval(() => {
+//             if (authToken && userId) {
+//                 clearInterval(interval);
+//                 resolve();
+//             }
+//         }, 100);
+//     });
+// }
+
+// window.webpackChunkdiscord_app.push([
+//     [Math.random()], {}, (req) => {
+//         for (const module of Object.values(req.c)) {
+//             if (module?.exports?.default?.getToken !== undefined) {
+//                 authToken = module.exports.default.getToken();
+//                 console.log("Your Token:", authToken);
+//             }
+//             if (module?.exports?.default?.getCurrentUser !== undefined) {
+//                 userId = module.exports.default.getCurrentUser().id;
+//                 console.log("Your User ID:", userId);
+//             }
+//         }
+//     }
+// ]);
 
 async function getMessages(beforeMessageId = null) {
     let url = `https://discord.com/api/v9/channels/${channelId}/messages?limit=50`;
@@ -49,7 +51,7 @@ async function deleteMessage(messageId) {
 }
 
 async function deleteAllMessages() {
-    await waitForAuthData();
+    // await waitForAuthData();
 
     let messages = await getMessages();  
     let messagesToDelete = messages;
